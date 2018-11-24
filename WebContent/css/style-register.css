@@ -1,0 +1,36 @@
+body {
+  background-image: url("../img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+footer {
+  background-color: #343a40;
+  color: #6C7885;
+  width: 100%;
+  margin-top: 5%;
+}
+
+form {
+  padding: 3%;
+  background-color: #6c757d;
+  border-radius: 1%;
+  border: 2px solid black;
+}
+
+label {
+  margin-top: 0.5em;
+}
+
+.btn {
+  width: 100%;
+}
+
+
+@media screen and (min-height: 900px) {
+  footer {
+    position: fixed;
+    bottom: 0;
+  }
+}

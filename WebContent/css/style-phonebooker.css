@@ -1,0 +1,50 @@
+body {
+  height: 100%;
+  background-image: url("../img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+h3 {
+  text-align: center;
+}
+
+h6 {
+  color: black;
+}
+
+p {
+  margin: 0;
+  padding: 1%;
+}
+
+.dashboard-contacts {
+  padding-top: 1%;
+}
+
+.dashboard-profile {
+  background-color: #6C7885;
+  border-left: 8px solid rgba(0,0,0,0.1);
+  color: white;
+  padding-top: 1%;
+}
+
+footer {
+  background-color: #343a40;
+  color: #6C7885;
+  width: 100%;
+}
+
+@media screen and (min-height: 900px) {
+  footer {
+    position: fixed;
+    bottom: 0;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .dashboard-profile {
+    min-height: 840px;
+  }
+}

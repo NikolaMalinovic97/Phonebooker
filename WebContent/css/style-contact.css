@@ -1,0 +1,31 @@
+body {
+  background-image: url("../img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+footer {
+  background-color: #343a40;
+  color: #6C7885;
+  width: 100%;
+  margin-top: 5%;
+}
+
+.jumbotron {
+  background-color: #6c757d;
+  border: 2px solid black;
+  color: white;
+}
+
+textarea {
+  max-height: 200px;
+  border: 2px solid #6c757d;
+}
+
+@media screen and (min-height: 700px) {
+  footer {
+    position: fixed;
+    bottom: 0;
+  }
+}

@@ -1,0 +1,38 @@
+body {
+  background-image: url("../img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.jumbotron {
+  background-color: #6C7885 ;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+  border: 2px solid black;
+}
+
+.form-background {
+  background-color: #6C7885;
+  padding: 2rem;
+  color: white;
+  border-radius: 1%;
+  border: 2px solid black;
+}
+
+input:hover {
+  border-color: #B2FFA8;
+}
+
+.upper-footer {
+  background-color: #6C7885;
+  color: #343a40;
+}
+
+footer {
+  background-color: #343a40;
+  color: #6C7885;
+  height: 10%;
+  margin-top: 15%;
+}
