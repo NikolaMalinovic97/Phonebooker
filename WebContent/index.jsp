@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -49,6 +50,19 @@
       </div>
     </div>
     <!-- jumbotron -->
+    
+    <!--  fail message -->
+    <% String message = (String) request.getAttribute("failmessage"); %>
+    <% if(message != null) { %>	
+    	<div class="container">
+	   		<div class="offset-md-3 col-md-6 offset-sm-1 col-sm-10 col-xs-12">
+			  <div class="alert alert-danger" role="alert" align="center">
+				 <%= message %>
+			  </div>
+			</div>
+		</div>
+    <% } %>
+    <!--  fail message -->
     
     <!-- Login Container -->
     <div class="container mt-5">
