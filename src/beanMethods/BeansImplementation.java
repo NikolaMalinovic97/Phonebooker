@@ -14,7 +14,7 @@ import connection.ConnectionManager;
 public class BeansImplementation implements UserInterface, ContactInterface {
 
 	Connection connection = ConnectionManager.getInstance().getConenction();
-
+	
 	@Override
 	public ArrayList<User> getUsers() throws SQLException {
 		ArrayList<User> users = new ArrayList<User>();

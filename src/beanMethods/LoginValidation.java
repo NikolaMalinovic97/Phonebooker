@@ -8,13 +8,12 @@ import beans.User;
 public class LoginValidation {
 	
 	private int index = -1;
+	BeansImplementation bi = new BeansImplementation();
 
 	//Method that checks if input username exists in database
-	public boolean isUsernameValid(User user) throws SQLException {
+	public boolean isUsernameValid(String username) throws SQLException {
 		
-		String inputUsername = user.getUsername();
-		
-		BeansImplementation bi = new BeansImplementation();
+		String inputUsername = username;
 		
 		ArrayList<User> users = bi.getUsers();
 		
@@ -30,11 +29,9 @@ public class LoginValidation {
 	}
 	
 	//Method that checks if password corresponds username
-	public boolean isPasswordValid(User user) throws SQLException {
+	public boolean isPasswordValid(String password) throws SQLException {
 		
-		String inputPassword = user.getPassword();
-		
-		BeansImplementation bi = new BeansImplementation();
+		String inputPassword = password;
 		
 		ArrayList<User> users = bi.getUsers();
 		String targetPassword = users.get(index).getPassword();
