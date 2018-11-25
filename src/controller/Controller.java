@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beanMethods.BeansImplementation;
 import beanMethods.LoginValidation;
 import beanMethods.RegisterValidation;
 import beans.User;
@@ -99,6 +100,9 @@ public class Controller extends HttpServlet {
 			String regName = request.getParameter("name");
 			String regSurname = request.getParameter("surname");
 			String regDob = request.getParameter("birthDate");
+			if(regDob.equals("")) {
+				regDob = null;
+			}
 			String regEmail = request.getParameter("email");
 			String regPhone = request.getParameter("phone");
 			String repeatPassword = request.getParameter("repeatPassword");
@@ -107,7 +111,13 @@ public class Controller extends HttpServlet {
 			RegisterValidation rv = new RegisterValidation(regUser, repeatPassword);
 			
 			if(rv.isValid()) {
-				request.setAttribute("message", rv.getMessage());
+				BeansImplementation bi = new BeansImplementation();
+				try {
+					bi.addUser(regUser);
+					request.setAttribute("message", rv.getMessage());
+				} catch (SQLException e) {
+					request.setAttribute("failmessage", "Registration was unsuccesfull!");
+				}
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
 			}
 			else {
