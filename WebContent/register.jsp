@@ -37,6 +37,19 @@
     </nav>
     <!-- Navigation -->
     
+    <!--  Message -->
+    <% String message = (String) request.getAttribute("message"); %>
+    <% if(message != null) { %>	
+    	<div class="container mt-3">
+	   		<div class="offset-md-3 col-md-6 offset-sm-2 col-sm-8 offset-xs-1 col-xs-10">
+			  <div class="alert alert-danger" role="alert" align="center">
+				 <%= message %>
+			  </div>
+			</div>
+		</div>
+    <% } %>
+    <!--  Message -->
+    
     <!-- Form -->
     <div class="container-fluid">
       <div class="row">

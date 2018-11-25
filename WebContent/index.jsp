@@ -51,6 +51,23 @@
     </div>
     <!-- jumbotron -->
     
+    <!--  succes message -->
+    <% 
+     String succesMessage = (String) request.getAttribute("message"); 
+     if(succesMessage == "Registration was succesfull!") { 
+   	%>
+    	<div class="container">
+	   		<div class="offset-md-3 col-md-6 offset-sm-1 col-sm-10 col-xs-12">
+			  <div class="alert alert-success" role="alert" align="center">
+				 <%= succesMessage %>
+			  </div>
+			</div>
+		</div>
+    <%
+     }
+    %>
+    <!--  succes message -->
+    
     <!--  fail message -->
     <% String message = (String) request.getAttribute("failmessage"); %>
     <% if(message != null) { %>	

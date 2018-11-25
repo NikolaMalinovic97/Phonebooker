@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beanMethods.LoginValidation;
+import beanMethods.RegisterValidation;
+import beans.User;
 
 /**
  * Servlet implementation class Controller
@@ -84,6 +86,33 @@ public class Controller extends HttpServlet {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+			
+		}
+		
+		//In case parameter "action" is "doregister", controller should test if registration form is correct
+		//Client gets message if registration was succesfull or not
+		else if(action.equals("doregister")) {
+			
+			String regUsername = request.getParameter("username");
+			String regPassword = request.getParameter("password");
+			String regName = request.getParameter("name");
+			String regSurname = request.getParameter("surname");
+			String regDob = request.getParameter("birthDate");
+			String regEmail = request.getParameter("email");
+			String regPhone = request.getParameter("phone");
+			String repeatPassword = request.getParameter("repeatPassword");
+			
+			User regUser = new User(regUsername, regPassword, regName, regSurname, regDob, regEmail, regPhone);
+			RegisterValidation rv = new RegisterValidation(regUser, repeatPassword);
+			
+			if(rv.isValid()) {
+				request.setAttribute("message", rv.getMessage());
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
+			}
+			else {
+				request.setAttribute("message", rv.getMessage());
+				request.getRequestDispatcher("/register.jsp").forward(request, response);
 			}
 			
 		}

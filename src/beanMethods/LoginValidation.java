@@ -8,7 +8,7 @@ import beans.User;
 public class LoginValidation {
 	
 	private int index = -1;
-	BeansImplementation bi = new BeansImplementation();
+	private BeansImplementation bi = new BeansImplementation();
 
 	//Method that checks if input username exists in database
 	public boolean isUsernameValid(String username) throws SQLException {
