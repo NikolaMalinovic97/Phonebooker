@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="js/addContactModalValidation.js"></script>
     <title>Phonebooker</title>
   </head>
   <body>
@@ -20,6 +21,31 @@
     <% User logedUser = (User) session.getAttribute("logedUser"); %>
     <% ArrayList<Contact> contacts = (ArrayList<Contact>) session.getAttribute("contacts"); %>
     <!-- Session beans -->
+    
+    <!-- Profile info variables -->
+	<%
+	String userName = logedUser.getName();
+	String userSurname = logedUser.getSurname();
+	String userDOB = logedUser.getDob();
+	String userEmail = logedUser.getEmail();
+	String userPhone = logedUser.getPhone();
+	if(userName == null) {
+		userName = "";
+	}
+	if(userSurname == null) {
+		userSurname = "";
+	}
+	if(userDOB == null) {
+		userDOB = "";
+	}
+	if(userEmail == null) {
+		userEmail = "";
+	}
+	if(userPhone == null) {
+		userPhone = "";
+	}
+	%>
+	<!-- Beans for change info modal -->
     
     <!-- Navigation -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -102,32 +128,7 @@
               <!-- Table end -->
             </div>
           </div>
-        </div>
-        
-        <!-- Profile info variables -->
-		<%
-		String userName = logedUser.getName();
-		String userSurname = logedUser.getSurname();
-		String userDOB = logedUser.getDob();
-		String userEmail = logedUser.getEmail();
-		String userPhone = logedUser.getPhone();
-		if(userName == null) {
-			userName = "";
-		}
-		if(userSurname == null) {
-			userSurname = "";
-		}
-		if(userDOB == null) {
-			userDOB = "";
-		}
-		if(userEmail == null) {
-			userEmail = "";
-		}
-		if(userPhone == null) {
-			userPhone = "";
-		}
-		%>
-		<!-- Beans for change info modal -->
+        </div>        
         
         <!-- Profile -->
         <div class="col-lg-3 dashboard-profile">
@@ -207,23 +208,26 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
+		      <div class="alert alert-danger" role="alert" id="addContactAlert">
+				 All fields are required!
+			  </div>
 		        <form action="/Phonebooker/Controller" method="post">
 		            <div class="form-goup">
 		           	  <input type="hidden" name="action" value="addcontact" />
 		              <!-- Contact name -->
 		              <label for="InputContactName">Name</label>
-		              <input type="text" name="name" class="form-control shadow-lg">
+		              <input type="text" name="name" class="form-control shadow-lg" id="addContactName" onkeyup="validate()">
 		              <!-- Contact surname -->
 		              <label for="InputContactSurname">Surname</label>
-		              <input type="text" name="surname" class="form-control shadow-lg">
+		              <input type="text" name="surname" class="form-control shadow-lg" id="addContactSurname" onkeyup="validate()">
 		              <!-- Contact phone -->
 		              <label for="InputContactPhone">Phone number</label>
-		              <input type="text" name="surname" class="form-control shadow-lg">
+		              <input type="text" name="phone" class="form-control shadow-lg" id="addContactPhone" onkeyup="validate()">
 		            </div>
 		            <br>
 		            <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				        <button type="submit" class="btn btn-success">Save contact</button>
+				        <button type="submit" class="btn btn-success" disabled id="addContactSubmit">Save contact</button>
 				    </div>
 		        </form>
 		      </div>
