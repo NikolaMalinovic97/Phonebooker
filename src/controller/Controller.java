@@ -2,17 +2,19 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beanMethods.BeansImplementation;
 import beanMethods.LoginValidation;
 import beanMethods.RegisterValidation;
+import beans.Contact;
 import beans.User;
 
 /**
@@ -52,8 +54,7 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		BeansImplementation bi = new BeansImplementation();
 		
 		//Parameter "action" determines which jsp should be forwarded to
 		String action = request.getParameter("action");
@@ -67,12 +68,18 @@ public class Controller extends HttpServlet {
 		else if(action.equals("dologin")) {
 			
 			LoginValidation lv = new LoginValidation();
+			
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			
 			try {
 				if(lv.isUsernameValid(username)) {
 					if(lv.isPasswordValid(password)) {
-						ServletContext application = request.getServletContext();
-						application.setAttribute("username", username);
-						application.setAttribute("password", password);
+						User logedUser = bi.getUser(username);
+						ArrayList<Contact> contacts = bi.getAllContactsForUser(logedUser);
+						HttpSession session = request.getSession();
+						session.setAttribute("logedUser", logedUser);
+						session.setAttribute("contacts", contacts);
 						request.getRequestDispatcher("/phonebooker.jsp").forward(request, response);
 					}
 					else {
@@ -111,7 +118,6 @@ public class Controller extends HttpServlet {
 			RegisterValidation rv = new RegisterValidation(regUser, repeatPassword);
 			
 			if(rv.isValid()) {
-				BeansImplementation bi = new BeansImplementation();
 				try {
 					bi.addUser(regUser);
 					request.setAttribute("message", rv.getMessage());
