@@ -211,7 +211,7 @@
 		      <div class="alert alert-danger" role="alert" id="addContactAlert">
 				 All fields are required!
 			  </div>
-		        <form action="/Phonebooker/Controller" method="post">
+		        <form action="/Phonebooker/Controller" method="get">
 		            <div class="form-goup">
 		           	  <input type="hidden" name="action" value="addcontact" />
 		              <!-- Contact name -->
@@ -247,7 +247,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form action="/Phonebooker/Controller" method="post">
+		        <form action="/Phonebooker/Controller" method="get">
 		            <div class="form-goup">
 		           	  <input type="hidden" name="action" value="changecontact" />
 		           	  <!-- Choose contact -->
@@ -291,7 +291,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form action="/Phonebooker/Controller" method="post">
+		        <form action="/Phonebooker/Controller" method="get">
 		            <div class="form-goup">
 		           	  <input type="hidden" name="action" value="deletecontact" />
 		           	  <!-- Choose contact -->
@@ -327,7 +327,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form action="/Phonebooker/Controller" method="post">
+		        <form action="/Phonebooker/Controller" method="get">
 		            <div class="form-goup">
 		           	  <input type="hidden" name="action" value="changecontactinfo" />
 		           	   <!-- Name -->
