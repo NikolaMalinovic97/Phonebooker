@@ -253,9 +253,15 @@
 		           	  <!-- Choose contact -->
 		              <label for="InputContactName">Choose contact</label>
 		              <select>
-		              <% for(Contact c: contacts) { %>
-		                  <option><%= c.getContactName() + " " + c.getContactSurname() + " " + c.getContactPhone() %> </option>
-		              <% } %>
+		              <% 
+		              String contactStr;
+		              for(Contact c: contacts) { 
+		            	  contactStr = c.getContactName() + " " + c.getContactSurname() + " " + c.getContactPhone(); 
+		              %>
+		                  <option value="<%= contactStr %>" ><%= contactStr %></option>
+		              <%
+		              } 
+		              %>
 		              </select>
 		              <br>
 		              <!-- Contact name -->
