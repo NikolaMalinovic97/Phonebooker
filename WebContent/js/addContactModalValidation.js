@@ -6,11 +6,11 @@ let message;
 let getAlert;
 
 function initialize() {
-  name = document.querySelector("#addContactName").value;
-  surname = document.querySelector("#addContactSurname").value;
-  phone = document.querySelector("#addContactPhone").value;
-  disabledStatus = document.querySelector("#addContactSubmit");
-  getAlert = document.querySelector("#addContactAlert");
+  name = document.getElementById("addContactName").value;
+  surname = document.getElementById("addContactSurname").value;
+  phone = document.getElementById("addContactPhone").value;
+  disabledStatus = document.getElementById("addContactSubmit");
+  getAlert = document.getElementById("addContactAlert");
 }
 
 function validate() {
@@ -23,7 +23,7 @@ function validate() {
   } else {
     disabledStatus.disabled = true;
   }
-  document.querySelector("#addContactAlert").innerHTML = message;
+  document.getElementById("addContactAlert").innerHTML = message;
 }
 
 function isNameValid() {
