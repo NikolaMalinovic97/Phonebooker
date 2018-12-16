@@ -2,6 +2,7 @@ let contacts = [];
 let tableBody;
 let searchValue;
 
+//This function retrieves tb element and fills contacts[] with all contacts in table
 function getContactsAndTableBody() {
   tableBody = document.getElementById('tableBody');
   let contactName;
@@ -15,6 +16,7 @@ function getContactsAndTableBody() {
   }
 }
 
+//This function gets search input value, and calls on of search functions
 function doSearch() {
   searchValue = document.getElementById('searchInput').value;
   deleteAllRows();
@@ -25,6 +27,7 @@ function doSearch() {
   }
 }
 
+//This function deletes all rows in table
 function deleteAllRows() {
   let curentContactLength = document.getElementById('tableBody').rows.length;
   console.log(curentContactLength);
@@ -33,6 +36,7 @@ function deleteAllRows() {
   }
 }
 
+//This function recreates all table rows (inserts all contacts in table)
 function showAllContacts() {
   let row;
   let cellName;
@@ -49,6 +53,7 @@ function showAllContacts() {
   }
 }
 
+//This function determinate searching by criteria, and recreates only contact which contain search input value
 function showSearchedContacts() {
 	let row;
 	let cellName;

@@ -101,7 +101,7 @@
             <div class="col-8 col-md-5 col-lg-3">
               <div class="input-group-prepend">
                 <button class="btn btn-secondary" type="button" id="button-addon1">Search by:</button>
-                <select class="form-control" id="searchCriteria">
+                <select class="form-control" id="searchCriteria" onchange="doSearch()">
                  <option>Name</option>
                  <option>Surname</option>
                  <option>Phone</option>
