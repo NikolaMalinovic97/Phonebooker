@@ -54,15 +54,51 @@ function showSearchedContacts() {
 	let cellName;
 	let cellSurname;
 	let cellPhone;
-	for (let i = contacts.length - 1; i >= 0; i--) {
-		if(contacts[i].name.toUpperCase().includes(searchValue.toUpperCase())) {
-			row = tableBody.insertRow(0);
-			cellName = row.insertCell(0);
-			cellSurname = row.insertCell(1);
-			cellPhone = row.insertCell(2);
-			cellName.innerHTML = contacts[i].name;
-			cellSurname.innerHTML = contacts[i].surname;
-			cellPhone.innerHTML = contacts[i].phone;
-		}
+	let criteria = document.getElementById('searchCriteria').value;
+	
+	switch(criteria) {	
+	
+	case 'Name': for (let i = contacts.length - 1; i >= 0; i--) {
+					 if(contacts[i].name.toUpperCase().includes(searchValue.toUpperCase())) {
+						row = tableBody.insertRow(0);
+						cellName = row.insertCell(0);
+						cellSurname = row.insertCell(1);
+						cellPhone = row.insertCell(2);
+						cellName.innerHTML = contacts[i].name;
+						cellSurname.innerHTML = contacts[i].surname;
+						cellPhone.innerHTML = contacts[i].phone;
+					 }
+				  }
+				  break;
+				  
+
+	case 'Surname': for (let i = contacts.length - 1; i >= 0; i--) {
+					 if(contacts[i].surname.toUpperCase().includes(searchValue.toUpperCase())) {
+						row = tableBody.insertRow(0);
+						cellName = row.insertCell(0);
+						cellSurname = row.insertCell(1);
+						cellPhone = row.insertCell(2);
+						cellName.innerHTML = contacts[i].name;
+						cellSurname.innerHTML = contacts[i].surname;
+						cellPhone.innerHTML = contacts[i].phone;
+					 }
+				  }
+				  break;
+				  
+
+	case 'Phone': for (let i = contacts.length - 1; i >= 0; i--) {
+					 if(contacts[i].phone.includes(searchValue)) {
+						row = tableBody.insertRow(0);
+						cellName = row.insertCell(0);
+						cellSurname = row.insertCell(1);
+						cellPhone = row.insertCell(2);
+						cellName.innerHTML = contacts[i].name;
+						cellSurname.innerHTML = contacts[i].surname;
+						cellPhone.innerHTML = contacts[i].phone;
+					 }
+				  }
+				  break;
 	}
+	
+	
 }

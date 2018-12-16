@@ -95,13 +95,13 @@
                 <div class="input-group-prepend">
                   <button class="btn btn-secondary" type="button" id="button-addon1"><i class="fas fa-search"></i></button>
                 </div>
-                <input type="text" id="searchInput" class="form-control" placeholder="Search" onkeydown="doSearch()">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search" onkeyup="doSearch()">
               </div>
             </div>
             <div class="col-8 col-md-5 col-lg-3">
               <div class="input-group-prepend">
                 <button class="btn btn-secondary" type="button" id="button-addon1">Search by:</button>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select class="form-control" id="searchCriteria">
                  <option>Name</option>
                  <option>Surname</option>
                  <option>Phone</option>
