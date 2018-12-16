@@ -66,13 +66,3 @@ function showSearchedContacts() {
 		}
 	}
 }
-
-function test() {
-  searchValue = document.getElementById('searchInput').value;
-  deleteAllRows();
-  if(searchValue == '') {
-	  showAllContacts();
-  } else {
-	  showSearchedContacts();
-  } 
-}

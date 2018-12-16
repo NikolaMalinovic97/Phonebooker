@@ -95,7 +95,7 @@
                 <div class="input-group-prepend">
                   <button class="btn btn-secondary" type="button" id="button-addon1"><i class="fas fa-search"></i></button>
                 </div>
-                <input type="text" id="searchInput" class="form-control" placeholder="Search" onkeyup="test()">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search" onkeydown="doSearch()">
               </div>
             </div>
             <div class="col-8 col-md-5 col-lg-3">
@@ -104,6 +104,7 @@
                 <select class="form-control" id="exampleFormControlSelect1">
                  <option>Name</option>
                  <option>Surname</option>
+                 <option>Phone</option>
                 </select>
               </div>
             </div>
