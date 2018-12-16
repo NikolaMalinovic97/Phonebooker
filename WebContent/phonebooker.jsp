@@ -12,11 +12,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="js/objects/contact.js"></script>
+    <script src="js/tableManager.js"></script>
     <script src="js/addContactModalValidation.js"></script>
     <script src="js/changeContactModal.js"></script>
     <title>Phonebooker</title>
   </head>
-  <body>
+  <body onload="getContactsAndTableBody()">
     
     <!-- Session beans -->
     <% User logedUser = (User) session.getAttribute("logedUser"); %>
@@ -93,7 +95,7 @@
                 <div class="input-group-prepend">
                   <button class="btn btn-secondary" type="button" id="button-addon1"><i class="fas fa-search"></i></button>
                 </div>
-                <input type="text" class="form-control" placeholder="Search" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search" onkeyup="test()">
               </div>
             </div>
             <div class="col-8 col-md-5 col-lg-3">
@@ -116,7 +118,7 @@
                     <th scope="col">Phone number</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="tableBody">
                 <% for(Contact c: contacts) { %>
                   <tr>
                     <td><%= c.getContactName() %></td>
@@ -127,6 +129,7 @@
                 </tbody>
               </table>
               <!-- Table end -->
+              
             </div>
           </div>
         </div>        
