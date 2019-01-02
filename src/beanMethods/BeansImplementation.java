@@ -100,7 +100,7 @@ public class BeansImplementation implements UserInterface, ContactInterface {
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
 		String querry = "SELECT username, contactName, contactSurname, contactPhone FROM contact "
-				   	+ "WHERE username = ?";
+				   	+ "WHERE username = ? ORDER BY contactName;";
 		
 		ResultSet rs = null;
 		
