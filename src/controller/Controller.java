@@ -182,7 +182,7 @@ public class Controller extends HttpServlet {
 			request.getRequestDispatcher("/phonebooker.jsp").forward(request, response);
 		}
 		
-		//Case for changing existing contact
+		//Case for deleteing contact
 		else if(action.equals("deletecontact")) {
 			HttpSession session = request.getSession();
 			User logedUser = (User) session.getAttribute("logedUser");
@@ -196,6 +196,36 @@ public class Controller extends HttpServlet {
 				bi.deleteContact(contact);
 				ArrayList<Contact> contacts = bi.getAllContactsForUser(logedUser);
 				session.setAttribute("contacts", contacts);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.getRequestDispatcher("/phonebooker.jsp").forward(request, response);
+		}
+		
+		//Case for changing user info
+		else if(action.equals("changecontactinfo")) {
+			HttpSession session = request.getSession();
+			User logedUser = (User) session.getAttribute("logedUser");
+			String username = logedUser.getUsername();
+			String password = logedUser.getPassword();
+			String oldName = logedUser.getName();
+			String oldSurname = logedUser.getSurname();
+			String oldDob = logedUser.getDob();
+			String oldEmail = logedUser.getEmail();
+			String oldPhone = logedUser.getPhone();
+			String newName = request.getParameter("name");
+			String newSurname = request.getParameter("surname");
+			String newDob = request.getParameter("birthDate");
+			String newEmail = request.getParameter("email");
+			String newPhone = request.getParameter("phone");
+			User oldUser = new User(username, password, oldName, oldSurname, oldDob, oldEmail, oldPhone);
+			User newUser = new User(username, password, newName, newSurname, newDob, newEmail, newPhone);
+			
+			try {
+				bi.updateUser(oldUser, newUser);
+				session.setAttribute("logedUser", newUser);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
