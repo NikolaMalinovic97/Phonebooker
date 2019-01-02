@@ -44,6 +44,7 @@ public class Controller extends HttpServlet {
 		if(action == null) {
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
+		
 	}
 
 	/**
@@ -131,6 +132,32 @@ public class Controller extends HttpServlet {
 				request.getRequestDispatcher("/register.jsp").forward(request, response);
 			}
 			
+		}
+		
+		//Case for adding new contact
+		else if(action.equals("addcontact")) {
+			HttpSession session = request.getSession();
+			User logedUser = (User) session.getAttribute("logedUser");
+			String username = logedUser.getUsername();
+			String contactName = request.getParameter("name");
+			String contactSurname = request.getParameter("surname");
+			String contactPhone = request.getParameter("phone");
+			Contact contact = new Contact(username, contactName, contactSurname, contactPhone);
+			
+			try {
+				bi.addContact(contact);
+				ArrayList<Contact> contacts = bi.getAllContactsForUser(logedUser);
+				session.setAttribute("contacts", contacts);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.removeAttribute("name");
+			request.removeAttribute("surname");
+			request.removeAttribute("phone");
+			request.removeAttribute("action");
+			request.getRequestDispatcher("/phonebooker.jsp").forward(request, response);
 		}
 	}
 

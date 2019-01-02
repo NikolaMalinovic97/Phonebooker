@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> <!-- session.getAttribute("username") -->
 <%@ page import="beans.User , beans.Contact , java.util.ArrayList" %>
+<% request.removeAttribute("name");
+request.removeAttribute("surname");
+request.removeAttribute("phone");
+request.removeAttribute("action"); %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -216,7 +220,7 @@
 		      <div class="alert alert-danger" role="alert" id="addContactAlert">
 				 All fields are required!
 			  </div>
-		        <form action="/Phonebooker/Controller" method="get">
+		        <form action="/Phonebooker/Controller" method="post">
 		            <div class="form-goup">
 		           	  <input type="hidden" name="action" value="addcontact" />
 		              <!-- Contact name -->
