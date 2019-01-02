@@ -1,11 +1,17 @@
 let getOption; //This variable grabs select DOM node
 let text; //This variable grabs the text of selected option
+
 let contactName;
 let contactSurname;
 let contactPhone;
+
 let getNameInput;
 let getSurnameInput;
 let getPhoneInput;
+
+let getOldNameInput;
+let getOldSurnameInput;
+let getOldPhoneInput;
 
 function setContactValues() {
   getOption = document.getElementById("changeContactModalSelect");
@@ -14,6 +20,9 @@ function setContactValues() {
   getNameInput = document.getElementById("changeContactNameInput");
   getSurnameInput = document.getElementById("changeContactSurnameInput");
   getPhoneInput = document.getElementById("changeContactPhoneInput");
+  getOldNameInput = document.getElementById("contactOldName");
+  getOldSurnameInput = document.getElementById("contactOldSurname");
+  getOldPhoneInput = document.getElementById("contactOldPhone");
   
   contactName = getContactName(text);
   contactSurname = getContactSurname(text);
@@ -22,6 +31,11 @@ function setContactValues() {
   getNameInput.value = contactName;
   getSurnameInput.value = contactSurname;
   getPhoneInput.value = contactPhone;
+  
+  getOldNameInput.value = contactName;
+  getOldSurnameInput.value = contactSurname;
+  getOldPhoneInput.value = contactPhone;
+  console.log(getOldPhoneInput);
 }
 
 //This method extracts name out of option text
