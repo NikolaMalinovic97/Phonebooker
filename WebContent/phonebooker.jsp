@@ -20,6 +20,7 @@ request.removeAttribute("action"); %>
     <script src="js/tableManager.js"></script>
     <script src="js/addContactModalValidation.js"></script>
     <script src="js/changeContactModal.js"></script>
+    <script src="js/deleteContactModal.js"></script>
     <title>Phonebooker</title>
   </head>
   <body onload="getContactsAndTableBody()">
@@ -133,6 +134,8 @@ request.removeAttribute("action"); %>
                 <% } %> 
                 </tbody>
               </table>
+              <br>
+              <br>
               <!-- Table end -->
               
             </div>
@@ -319,7 +322,7 @@ request.removeAttribute("action"); %>
 		              <input type="hidden" name="phone" id="deletePhone">
 		           	  <!-- Choose contact -->
 		              <label for="InputContactName">Choose contact</label>
-		              <select>
+		              <select id="deleteContactModalSelect" onchange="setDeleteValues()">
 		              <% for(Contact c: contacts) { %>
 		                  <option><%= c.getContactName() + " " + c.getContactSurname() + " " + c.getContactPhone() %> </option>
 		              <% } %>
@@ -353,12 +356,6 @@ request.removeAttribute("action"); %>
 		        <form action="/Phonebooker/Controller" method="post">
 		            <div class="form-goup">
 		           	  <input type="hidden" name="action" value="changecontactinfo" />
-		           	   <!-- hidden values -->
-		               <input type="hidden" name="contactOldName" id="userOldName">
-		               <input type="hidden" name="contactOldSurname" id="userOldSurname">
-		               <input type="hidden" name="contactOldPhone" id="userOldDob">
-		               <input type="hidden" name="contactOldPhone" id="userOldEmail">
-		               <input type="hidden" name="contactOldPhone" id="userOldPhone">
 		           	   <!-- Name -->
 		               <label for="InputName">Name</label>
 		               <input type="text" name="name" class="form-control shadow-lg" value="<%= userName %>">

@@ -35,7 +35,6 @@ function setContactValues() {
   getOldNameInput.value = contactName;
   getOldSurnameInput.value = contactSurname;
   getOldPhoneInput.value = contactPhone;
-  console.log(getOldPhoneInput);
 }
 
 //This method extracts name out of option text

@@ -153,10 +153,32 @@ public class Controller extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			request.removeAttribute("name");
-			request.removeAttribute("surname");
-			request.removeAttribute("phone");
-			request.removeAttribute("action");
+			request.getRequestDispatcher("/phonebooker.jsp").forward(request, response);
+		}
+		
+		//Case for changing existing contact
+		else if(action.equals("changecontact")) {
+			HttpSession session = request.getSession();
+			User logedUser = (User) session.getAttribute("logedUser");
+			String username = logedUser.getUsername();
+			String oldContactName = request.getParameter("contactOldName");
+			String oldContactSurname = request.getParameter("contactOldSurname");
+			String oldContactPhone = request.getParameter("contactOldPhone");
+			String newContactName = request.getParameter("name");
+			String newContactSurname = request.getParameter("surname");
+			String newContactPhone = request.getParameter("phone");
+			Contact oldContact = new Contact(username, oldContactName, oldContactSurname, oldContactPhone);
+			Contact newContact = new Contact(username, newContactName, newContactSurname, newContactPhone);
+			
+			try {
+				bi.updateContact(oldContact, newContact);
+				ArrayList<Contact> contacts = bi.getAllContactsForUser(logedUser);
+				session.setAttribute("contacts", contacts);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			request.getRequestDispatcher("/phonebooker.jsp").forward(request, response);
 		}
 	}
