@@ -256,7 +256,7 @@ request.removeAttribute("action"); %>
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form action="/Phonebooker/Controller" method="get">
+		        <form action="/Phonebooker/Controller" method="post">
 		            <div class="form-goup">
 		           	  <input type="hidden" name="action" value="changecontact" />
 		           	  <!-- Choose contact -->
@@ -273,6 +273,10 @@ request.removeAttribute("action"); %>
 		              %>
 		              </select>
 		              <br>
+		              <!-- hidden values -->
+		              <input type="hidden" name="contactOldName" id="contactOldName">
+		              <input type="hidden" name="contactOldSurname" id="contactOldSurname">
+		              <input type="hidden" name="contactOldPhone" id="contactOldPhone">
 		              <!-- Contact name -->
 		              <label for="InputContactName">Name</label>
 		              <input type="text" name="name" class="form-control shadow-lg" id="changeContactNameInput">
@@ -306,9 +310,13 @@ request.removeAttribute("action"); %>
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form action="/Phonebooker/Controller" method="get">
+		        <form action="/Phonebooker/Controller" method="post">
 		            <div class="form-goup">
 		           	  <input type="hidden" name="action" value="deletecontact" />
+		           	  <!-- hidden values -->
+		              <input type="hidden" name="name" id="deleteName">
+		              <input type="hidden" name="surname" id="deleteSurname">
+		              <input type="hidden" name="phone" id="deletePhone">
 		           	  <!-- Choose contact -->
 		              <label for="InputContactName">Choose contact</label>
 		              <select>
@@ -342,9 +350,15 @@ request.removeAttribute("action"); %>
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form action="/Phonebooker/Controller" method="get">
+		        <form action="/Phonebooker/Controller" method="post">
 		            <div class="form-goup">
 		           	  <input type="hidden" name="action" value="changecontactinfo" />
+		           	   <!-- hidden values -->
+		               <input type="hidden" name="contactOldName" id="userOldName">
+		               <input type="hidden" name="contactOldSurname" id="userOldSurname">
+		               <input type="hidden" name="contactOldPhone" id="userOldDob">
+		               <input type="hidden" name="contactOldPhone" id="userOldEmail">
+		               <input type="hidden" name="contactOldPhone" id="userOldPhone">
 		           	   <!-- Name -->
 		               <label for="InputName">Name</label>
 		               <input type="text" name="name" class="form-control shadow-lg" value="<%= userName %>">
